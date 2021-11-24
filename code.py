@@ -2,9 +2,8 @@
     Code adapted from the following sources:
     MACROPAD Hotkey (https://learn.adafruit.com/macropad-hotkeys/project-code)
     Pico Four Keypad  (https://learn.adafruit.com/pico-four-key-macropad/code-the-four-keypad)
-    # SPDX-FileCopyrightText: 2021 Pierre Constantineau
-    # SPDX-License-Identifier: MIT
-    # Raspberry Pi Pico 4x4 Macropad
+    https://github.com/jpconstantineau/pykey/blob/main/examples/Raspberry_Pi_Pico_4x4_Macropad_v2/code.py
+    
 """
 import board
 import keypad
