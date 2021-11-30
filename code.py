@@ -3,7 +3,7 @@
     MACROPAD Hotkey (https://learn.adafruit.com/macropad-hotkeys/project-code)
     Pico Four Keypad  (https://learn.adafruit.com/pico-four-key-macropad/code-the-four-keypad)
     https://github.com/jpconstantineau/pykey/blob/main/examples/Raspberry_Pi_Pico_4x4_Macropad_v2/code.py
-    
+
 """
 import board
 import keypad
@@ -13,7 +13,7 @@ import usb_hid
 from adafruit_hid.keyboard import Keyboard
 from adafruit_hid.keycode import Keycode
 from adafruit_hid.keyboard_layout_us import KeyboardLayoutUS
-from adafruit_itertools import cycle
+from adafruit_itertools.adafruit_itertools import cycle
 
 # Setup palette iterator and mode
 mode = 0
@@ -43,22 +43,22 @@ keys = keypad.Keys(
 
 
 keymap = [
-    ("A", [Keycode.A]),
-    ("B", [Keycode.B]),
-    ("C", [Keycode.C]),
-    ("D", [Keycode.D]),
-    ("E", [Keycode.E]),
-    ("F", [Keycode.F]),
-    ("G", [Keycode.G]),
-    ("H", [Keycode.H]),
-    ("I", [Keycode.I]),
-    ("J", [Keycode.J]),
-    ("Hi", "Hi"),
-    ("Hey", "Hey"),
-    ("Howdy", "Howdy"),
-    ("Hola", "Hola"),
-    ("Hiya", "Hiya"),
-    ("Hei", "Hei")
+    ("7", [Keycode.KEYPAD_SEVEN]),
+    ("8", [Keycode.KEYPAD_EIGHT]),
+    ("9", [Keycode.KEYPAD_NINE]),
+    ("Numlock", [Keycode.KEYPAD_NUMLOCK]),
+    ("4", [Keycode.KEYPAD_FOUR]),
+    ("5", [Keycode.KEYPAD_FIVE]),
+    ("6", [Keycode.KEYPAD_SIX]),
+    ("Delete", [Keycode.BACKSPACE]),
+    ("1", [Keycode.KEYPAD_ONE]),
+    ("2", [Keycode.KEYPAD_TWO]),
+    ("3", [Keycode.KEYPAD_THREE]),
+    ("Enter", [Keycode.KEYPAD_ENTER]),
+    ("0", [Keycode.KEYPAD_ZERO]),
+    ("Copy", [Keycode.LEFT_CONTROL, Keycode.C]),
+    ("Paste", [Keycode.LEFT_CONTROL, Keycode.V]),
+    ("Save Quit", [":wq!"])
 ]
 
 keymap_mode_1 = [
