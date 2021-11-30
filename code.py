@@ -1,5 +1,14 @@
 """
-    Code adapted from the following sources:
+
+                    _/                                                    _/
+         _/_/_/          _/_/_/    _/_/        _/_/_/      _/_/_/    _/_/_/
+        _/    _/  _/  _/        _/    _/      _/    _/  _/    _/  _/    _/
+       _/    _/  _/  _/        _/    _/      _/    _/  _/    _/  _/    _/
+      _/_/_/    _/    _/_/_/    _/_/        _/_/_/      _/_/_/    _/_/_/
+     _/                                    _/
+    _/                                    _/
+
+    Code loosely adapted from the following sources:
     MACROPAD Hotkey (https://learn.adafruit.com/macropad-hotkeys/project-code)
     Pico Four Keypad  (https://learn.adafruit.com/pico-four-key-macropad/code-the-four-keypad)
     https://github.com/jpconstantineau/pykey/blob/main/examples/Raspberry_Pi_Pico_4x4_Macropad_v2/code.py
@@ -7,13 +16,19 @@
 """
 import board
 import keypad
-import time
 import neopixel
 import usb_hid
 from adafruit_hid.keyboard import Keyboard
 from adafruit_hid.keycode import Keycode
 from adafruit_hid.keyboard_layout_us import KeyboardLayoutUS
 from adafruit_itertools.adafruit_itertools import cycle
+
+def swap(mode):
+    return 1-mode
+
+
+def quine():
+    print(open(__file__).read())
 
 # Setup palette iterator and mode
 mode = 0
@@ -62,22 +77,22 @@ keymap = [
 ]
 
 keymap_mode_1 = [
-    ("7", [Keycode.A]),
-    ("8", [Keycode.B]),
-    ("9", [Keycode.C]),
-    ("Mode switch", [Keycode.D]),
-    ("4", [Keycode.E]),
-    ("5", [Keycode.F]),
-    ("6", [Keycode.G]),
-    ("Empty 8", [Keycode.H]),
-    ("1", [Keycode.I]),
-    ("2", [Keycode.J]),
-    ("3", "Hi"),
-    ("Empty 12", "Hey"),
-    ("0", "Howdy"),
-    ("Empty 14", "Hola"),
-    ("Empty 15", "Hiya"),
-    ("Empty 16", "Hei")
+    ("7", [kpd.send, [Keycode.KEYPAD_SEVEN]]),
+    ("8", [kpd.send, [Keycode.KEYPAD_EIGHT]]),
+    ("9", [kpd.send, [Keycode.KEYPAD_NINE]]),
+    ("Swap", [swap]),
+    ("4", [kpd.send, [Keycode.KEYPAD_FOUR]]),
+    ("5", [kpd.send, [Keycode.KEYPAD_FIVE]]),
+    ("6", [kpd.send, [Keycode.KEYPAD_SIX]]),
+    ("Backspace", [kpd.send, [Keycode.BACKSPACE]]),
+    ("1", [kpd.send, [Keycode.KEYPAD_ONE]]),
+    ("2", [kpd.send, [Keycode.KEYPAD_TWO]]),
+    ("3", [kpd.send, [Keycode.KEYPAD_THREE]]),
+    ("Enter", [kpd.send, [Keycode.KEYPAD_ENTER]]),
+    ("0", [kpd.send, [Keycode.KEYPAD_ZERO]]),
+    ("Select All", [kpd.send, [Keycode.LEFT_CONTROL, Keycode.A]]),
+    ("Copy", [kpd.send, [Keycode.LEFT_CONTROL, Keycode.C]]),
+    ("Paste", [kpd.send, [Keycode.LEFT_CONTROL, Keycode.V]])
 ]
 
 keymap_mode_2 = [
